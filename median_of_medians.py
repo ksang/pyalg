@@ -25,12 +25,15 @@ def partition(nums, left, right, pivotIndex):
 
 # implement with insertion sort
 def partition5(nums, left, right):
+	buf = []
 	for i in range(left, right+1):
+		buf.append((nums[i], i))
+	for i in range(0, len(buf)):
 		j = i
-		while j > 0 and nums[j] < nums[j-1]:
-			swap(j-1, j, nums)
+		while j > 0 and buf[j][0] < buf[j-1][0]:
+			swap(j-1, j, buf)
 			j -= 1
-	return (left + right) / 2
+	return buf[len(buf)/2][1]
 
 def pivot(nums, left, right):
 	if right - left < 5:
@@ -41,9 +44,9 @@ def pivot(nums, left, right):
 		if subRight > right:
 			subRight = right
 		median5 = partition5(nums, i, subRight)
-		swap(median5, left + floor((i - left)/5), nums)
+		swap(median5, int(left + floor((i - left)/5)), nums)
 		i += 5
-	return select(nums, left, left + ceil((right - left)/5) - 1, left + (right - left)/10)
+	return select(nums, left, int(left + ceil((right - left)/5) - 1), left + (right - left)/10)
 
 def select(nums, left, right, n):
 	if left == right:
@@ -59,5 +62,7 @@ def select(nums, left, right, n):
 			left = pivotIndex + 1
 
 if __name__ == '__main__':
-	nums = [3,3,1,5,5,7,7,7,7]
-	print select(nums, 0, len(nums) - 1, (len(nums) - 1)/2)
+	nums = [1,2,3,4,5,6,7,8,9,1,2,3,4,5,6,7,8,9,1,2,3,4,5,6,7,8,9,1,2,3,4,5,6,7,8,9]
+	print partition5(nums,0,7)
+	p = select(nums, 0, len(nums) - 1, (len(nums) - 1)/2)
+	print "%s %s" % (p, nums[p])
