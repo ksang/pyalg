@@ -38,3 +38,14 @@ Java code:
 
 [http://keithschwarz.com/interesting/code/?dir=fibonacci-heap](http://keithschwarz.com/interesting/code/?dir=fibonacci-heap)
 
+Median of Medians
+=============
+
+Median of Medians select algorithm implementation in python.
+O(n) time complexity and O(1) space.
+
+Reference:
+-------------
+Wiki:
+
+[https://en.wikipedia.org/wiki/Median_of_medians](https://en.wikipedia.org/wiki/Median_of_medians)
