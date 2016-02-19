@@ -6,9 +6,7 @@ from math import floor
 from math import ceil
 
 def swap(i, j, nums):
-    buf = nums[j]
-    nums[j] = nums[i]
-    nums[i] = buf
+    nums[i], nums[j] = nums[j], nums[i]
 
 # group list to two parts, greater than / less than nums[pivotIndex]
 def partition(nums, left, right, pivotIndex):
